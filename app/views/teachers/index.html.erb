@@ -1,8 +1,8 @@
 <h2>Teachers</h2>
 <ul>
-  <% @users.each do |user| %>
+  <% @teachers.each do |teacher| %>
     <li>
-      <%= user.name %>
+      <%=link_to teacher.name, teacher_path(teacher) %>
     </li>
   <% end %>
 </ul>

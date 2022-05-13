@@ -1,6 +1,10 @@
 class StudentsController < ApplicationController
   def index
-    @users = User.all.where(is_teacher: false)
+    @students = User.all.where(is_teacher: false)
+  end
+
+  def show
+    @student = User.find(params[:id])
   end
 end
 
