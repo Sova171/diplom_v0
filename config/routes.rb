@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   end
 
   get "/teachers", to: "teachers#index"
+  get "/myprofile", to: "current_user#index"
   resources :timespans
 end
