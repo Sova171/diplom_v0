@@ -1,8 +1,14 @@
 <h2>Teachers</h2>
 <ul>
   <% @teachers.each do |teacher| %>
-    <li>
-      <%=link_to teacher.name, teacher_path(teacher) %>
-    </li>
+    <% if user_signed_in? && teacher == current_user%>
+      <li>
+        <%= link_to teacher.name, myprofile_path(teacher) %>
+      </li>
+    <% else %>
+      <li>
+        <%=link_to teacher.name, teacher_path(teacher) %>
+      </li>
+    <% end %>
   <% end %>
 </ul>
