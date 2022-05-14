@@ -1,11 +1,24 @@
 <h1>Welcome</h1>
-<h2><%= @user.name %></h2>
+<% if @user.is_teacher %>
+  <strong>Teacher</strong>
+<% else %>
+  <strong>Student</strong>
+<% end %>
+<strong><%= @user.name %></strong>
+<br>
 
-<strong>Achievements:</strong>
-<% @user.achievements.each do |achievement| %>
-  <p>
-    <%=link_to achievement.title, user_achievement_path(@user, achievement)%>
-  </p>
+<% if @user.achievements.empty? %>
+  <strong>No achievements</strong>
+  <br>
+<% else %>
+
+  <strong>Achievements:</strong>
+  <% @user.achievements.each do |achievement| %>
+    <p>
+      <%=link_to achievement.title, user_achievement_path(@user, achievement)%>
+    </p>
+  <% end %>
+
 <% end %>
 
 <strong>Add an achievement:</strong>

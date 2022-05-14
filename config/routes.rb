@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   #get "/teachers", to: "teachers#index"
 
   get "/myprofile", to: "current_user#index"
+
+  get "/search", to: "students#search"
+  get "/search_teachers", to: "teachers#search_teachers"
+
   resources :teachers
   resources :students
   resources :timespans

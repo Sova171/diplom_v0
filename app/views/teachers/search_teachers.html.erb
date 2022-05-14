@@ -1,0 +1,18 @@
+<h3>Search Results</h3>
+
+
+<% if @results.blank? %>
+  <strong>Results not found</strong>
+<% end %>
+
+
+<% @results.each do |result| %>
+  <% if user_signed_in? && result == current_user%>
+    <%=link_to result.name, myprofile_path %>
+  <% else %>
+    <%=link_to result.name, student_path(result) %>
+    <br>
+  <% end %>
+<% end %>
+<br>
+<%= link_to "Back", teachers_path%>

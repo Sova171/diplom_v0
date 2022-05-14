@@ -1,4 +1,14 @@
 <h2>Teachers</h2>
+
+<%= form_tag(search_teachers_path, :method => "get") do %>
+  <div class="input-group">
+    <%= search_field_tag :search, params[:search], placeholder: "Search teachers", class: "form-control" %>
+    <div class="input-group-btn">
+      <%= button_tag "Search", :class => 'btn btn-info glyphicon glyphicon-search', :name => nil%>
+    </div>
+  </div>
+<%end %>
+
 <ul>
   <% @teachers.each do |teacher| %>
     <% if user_signed_in? && teacher == current_user%>

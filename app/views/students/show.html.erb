@@ -1,11 +1,20 @@
-<strong><%= @student.name%></strong>
+<strong>Student <%= @student.name%></strong>
 <br>
 Email: <%= @student.email %>
 <br>
-<strong>Achievements:</strong>
-<% @student.achievements.each do |achievement| %>
-  <p>
-    <%=link_to achievement.title, user_achievement_path(@student, achievement)%>
-  </p>
+
+<% if @student.achievements.empty? %>
+  <strong>No achievements</strong>
+  <br>
+<% else %>
+
+  <strong>Achievements:</strong>
+  <% @student.achievements.each do |achievement| %>
+    <p>
+      <%=link_to achievement.title, user_achievement_path(@student, achievement)%>
+    </p>
+  <% end %>
+
 <% end %>
+<br>
 <%=link_to "Back to student", root_path%>
