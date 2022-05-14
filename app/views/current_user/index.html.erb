@@ -8,9 +8,7 @@
   </p>
 <% end %>
 
-
-
-<h2>Add an achievement:</h2>
+<strong>Add an achievement:</strong>
 <%= form_with model: [ @user, @user.achievements.build ] do |form| %>
   <p>
     <%= form.label :title %><br>

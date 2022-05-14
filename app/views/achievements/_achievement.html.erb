@@ -5,10 +5,11 @@
   <strong>Description:</strong>
   <%= @achievement.description %>
 </p>
-<% if user_signed_in?%>
+
+<% if user_signed_in? && @achievement.user == current_user%>
   <%= link_to "Back", myprofile_path%>
-  <% elsif user.is_teacher%>
-  <%= link_to "Back", teachers_path(@user)%>
+  <%elsif @achievement.user.is_teacher?%>
+  <%= link_to "Back", teacher_path(@achievement.user)%>
   <% else %>
-  <%= link_to "Back", student_path(@user)%>
+  <%= link_to "Back", student_path(@achievement.user)%>
 <% end %>

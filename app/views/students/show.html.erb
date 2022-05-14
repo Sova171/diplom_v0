@@ -1,3 +1,11 @@
-<%= @student.name%>
+<strong><%= @student.name%></strong>
 <br>
 Email: <%= @student.email %>
+<br>
+<strong>Achievements:</strong>
+<% @student.achievements.each do |achievement| %>
+  <p>
+    <%=link_to achievement.title, user_achievement_path(@student, achievement)%>
+  </p>
+<% end %>
+<%=link_to "Back to student", root_path%>
