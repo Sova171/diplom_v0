@@ -1,0 +1,14 @@
+<p>
+  <strong><%= @achievement.title%></strong>
+</p>
+<p>
+  <strong>Description:</strong>
+  <%= @achievement.description %>
+</p>
+<% if user_signed_in?%>
+  <%= link_to "Back", myprofile_path%>
+  <% elsif user.is_teacher%>
+  <%= link_to "Back", teachers_path(@user)%>
+  <% else %>
+  <%= link_to "Back", student_path(@user)%>
+<% end %>

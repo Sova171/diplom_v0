@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
 
+  resources :users do
+    resources :achievements
+  end
   #get "/teachers", to: "teachers#index"
 
   get "/myprofile", to: "current_user#index"

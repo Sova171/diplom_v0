@@ -1,2 +1,26 @@
 <h1>Welcome</h1>
 <h2><%= @user.name %></h2>
+
+<strong>Achievements:</strong>
+<% @user.achievements.each do |achievement| %>
+  <p>
+    <%=link_to achievement.title, user_achievement_path(@user, achievement)%>
+  </p>
+<% end %>
+
+
+
+<h2>Add an achievement:</h2>
+<%= form_with model: [ @user, @user.achievements.build ] do |form| %>
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+  <p>
+    <%= form.label :description %><br>
+    <%= form.text_area :description %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
