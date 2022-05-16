@@ -17,8 +17,9 @@
   <strong>Description:</strong>
   <%= @achievement.description %>
 </p>
-
 <% if user_signed_in? && @achievement.user == current_user%>
+<%= button_to "Destroy this achievement", @achievement, method: :delete %>
+
   <%= link_to "Back", myprofile_path%>
   <%elsif @achievement.user.is_teacher?%>
   <%= link_to "Back", teacher_path(@achievement.user)%>

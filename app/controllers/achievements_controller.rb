@@ -1,4 +1,6 @@
 class AchievementsController < ApplicationController
+  #before_action :set_achievement, only: %i[ show edit update destroy ]
+
   def create
     @user = User.find(params[:user_id])
     @achievement = @user.achievements.create(achievement_params)
@@ -7,6 +9,13 @@ class AchievementsController < ApplicationController
 
   def show
     @achievement = Achievement.find(params[:id])
+  end
+
+  def destroy
+    @achievement = Achievement.find(params[:id])
+    @achievement.destroy
+
+     redirect_to myprofile_path, notice: "Achievement was successfully destroyed."
   end
 
   private
