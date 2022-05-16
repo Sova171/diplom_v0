@@ -15,7 +15,7 @@
   <strong>Achievements:</strong>
   <% @user.achievements.each do |achievement| %>
     <p>
-      <%=link_to achievement.title, user_achievement_path(@user, achievement)%>
+      <%=link_to achievement.title, user_achievement_path(@user, achievement), method: :post%>
     </p>
   <% end %>
 

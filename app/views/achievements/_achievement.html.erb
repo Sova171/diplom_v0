@@ -1,3 +1,15 @@
+<p><%= @achievement.likes.count %> <%= (@achievement.likes.count) == 1 ? 'Confirmation' : 'Confirmations'%></p>
+
+<% if user_signed_in? && @achievement.user != current_user && current_user.is_teacher == true %>
+
+  <% pre_like = @achievement.likes.find { |like| like.user_id == current_user.id} %>
+  <% if pre_like %>
+    <%= button_to 'Reject', achievement_like_path(@achievement, pre_like), method: :delete %>
+  <% else %>
+    <%= button_to 'Confirm', achievement_likes_path(@achievement), method: :post %>
+  <% end %>
+
+<% end %>
 <p>
   <strong><%= @achievement.title%></strong>
 </p>
