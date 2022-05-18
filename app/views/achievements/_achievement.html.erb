@@ -1,5 +1,3 @@
-<p><%= @achievement.likes.count %> <%= (@achievement.likes.count) == 1 ? 'Confirmation' : 'Confirmations'%></p>
-
 <% if user_signed_in? && @achievement.user != current_user && current_user.is_teacher == true %>
 
   <% pre_like = @achievement.likes.find { |like| like.user_id == current_user.id} %>
@@ -17,6 +15,17 @@
   <strong>Description:</strong>
   <%= @achievement.description %>
 </p>
+
+<% if @achievement.likes.count != 0 %>
+  <strong><%= (@achievement.likes.count) == 1 ? 'Approve:' : 'Approves:'%></strong>
+  <% approves = @achievement.likes.all { |like| like.achievement_id == @achievement.id} %>
+  <% approves.each do |approve| %>
+    <p>
+      <%= User.find(approve.user_id).name%>
+    </p>
+  <% end %>
+<%end %>
+
 <% if user_signed_in? && @achievement.user == current_user%>
 <%= button_to "Destroy this achievement", @achievement, method: :delete %>
 

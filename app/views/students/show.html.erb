@@ -11,7 +11,11 @@ Email: <%= @student.email %>
   <strong>Achievements:</strong>
   <% @student.achievements.each do |achievement| %>
     <p>
-      <%=link_to achievement.title, user_achievement_path(@student, achievement)%>
+      <% if achievement.likes != 0 %>
+        <%=link_to achievement.title, user_achievement_path(@student, achievement)%> :<%= achievement.likes.count %>+
+      <% else %>
+        <%=link_to achievement.title, user_achievement_path(@student, achievement)%>
+      <% end %>
     </p>
   <% end %>
 
