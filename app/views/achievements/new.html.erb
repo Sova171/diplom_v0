@@ -1,0 +1,16 @@
+<strong>Add an achievement:</strong>
+<%= form_with model: [ current_user, current_user.achievements.build ] do |form| %>
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+  <p>
+    <%= form.label :description %><br>
+    <%= form.text_area :description %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+<%= link_to "Back", myprofile_path %>

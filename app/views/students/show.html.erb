@@ -11,11 +11,8 @@ Email: <%= @student.email %>
   <strong>Achievements:</strong>
   <% @student.achievements.each do |achievement| %>
     <p>
-      <% if achievement.likes != 0 %>
-        <%=link_to achievement.title, user_achievement_path(@student, achievement)%> :<%= achievement.likes.count %>+
-      <% else %>
-        <%=link_to achievement.title, user_achievement_path(@student, achievement)%>
-      <% end %>
+      <%=link_to achievement.title, user_achievement_path(@student, achievement)%>
+      <span class="badge bg-secondary"><%= achievement.likes.count %></span>  
     </p>
   <% end %>
 

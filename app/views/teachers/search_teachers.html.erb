@@ -5,14 +5,27 @@
   <strong>Results not found</strong>
 <% end %>
 
-
 <% @results.each do |result| %>
   <% if user_signed_in? && result == current_user%>
-    <%=link_to result.name, myprofile_path %>
+    <%= link_to myprofile_path(result) do %>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= result.name%></h5>
+          <p  class="card-subtitle mb-2 text-muted">Achievements: <%= result.achievements.count %></p>
+        </div>
+      </div>
+    <% end %>
+
   <% else %>
-    <%=link_to result.name, student_path(result) %>
-    <br>
+    <%= link_to teacher_path(result) do %>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= result.name%></h5>
+          <p  class="card-subtitle mb-2 text-muted">Achievements: <%= result.achievements.count %></p>
+        </div>
+      </div>
+    <% end %>
   <% end %>
 <% end %>
-<br>
+
 <%= link_to "Back", teachers_path%>

@@ -4,7 +4,7 @@ class AchievementsController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @achievement = @user.achievements.create(achievement_params)
-    redirect_to user_path(@user)
+    redirect_to myprofile_path
   end
 
   def show

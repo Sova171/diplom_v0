@@ -10,7 +10,8 @@ Email: <%= @teacher.email %>
   <strong>Achievements:</strong>
   <% @teacher.achievements.each do |achievement| %>
     <p>
-        <%=link_to achievement.title, user_achievement_path(@teacher, achievement)%> :<%= achievement.likes.count %>+
+      <%=link_to achievement.title, user_achievement_path(@teacher, achievement)%>
+      <span class="badge bg-secondary"><%= achievement.likes.count %></span>
     </p>
   <% end %>
 

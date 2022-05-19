@@ -4,21 +4,30 @@
   <div class="input-group">
     <%= search_field_tag :search, params[:search], placeholder: "Search teachers", class: "form-control" %>
     <div class="input-group-btn">
-      <%= button_tag "Search", :class => 'btn btn-info glyphicon glyphicon-search', :name => nil%>
+      <%= button_tag "Search", :class => 'btn btn-outline-success', :name => nil%>
     </div>
   </div>
 <%end %>
 
-<ul>
-  <% @teachers.each do |teacher| %>
-    <% if user_signed_in? && teacher == current_user%>
-      <li>
-        <%= link_to teacher.name, myprofile_path(teacher) %>
-      </li>
-    <% else %>
-      <li>
-        <%=link_to teacher.name, teacher_path(teacher) %>
-      </li>
+<% @teachers.each do |teacher| %>
+  <% if user_signed_in? && teacher == current_user%>
+    <%= link_to myprofile_path(teacher) do %>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= teacher.name%></h5>
+          <p class="card-subtitle mb-2 text-muted">Achievements: <%= teacher.achievements.count %></p>
+        </div>
+      </div>
+    <% end %>
+
+  <% else %>
+    <%= link_to teacher_path(teacher) do %>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= teacher.name%></h5>
+          <p class="card-subtitle mb-2 text-muted">Achievements: <%= teacher.achievements.count %></p>
+        </div>
+      </div>
     <% end %>
   <% end %>
-</ul>
+<% end %>
