@@ -1,4 +1,4 @@
-<h1>Welcome</h1>
+<h2 class='card-title'>Welcome</h2>
 <% if @user.is_teacher %>
   <strong>Teacher</strong>
 <% else %>
@@ -35,3 +35,10 @@
     <%= form.submit %>
   </p>
 <% end %>
+
+<% if @user.is_teacher %>
+  <%=link_to "Back to teachers", teachers_path%>
+<% else %>
+  <%=link_to "Back to students", students_path%>
+<% end %>
+
