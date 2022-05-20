@@ -1,7 +1,7 @@
 <h2 class='card-title'>Teachers</h2>
 
 <%= form_tag(search_teachers_path, :method => "get") do %>
-  <div class="input-group">
+  <div class="input-group mb-2">
     <%= search_field_tag :search, params[:search], placeholder: "Search teachers", class: "form-control" %>
     <div class="input-group-btn">
       <%= button_tag "Search", :class => 'btn btn-outline-success', :name => nil%>
@@ -12,7 +12,7 @@
 <% @teachers.each do |teacher| %>
   <% if user_signed_in? && teacher == current_user%>
     <%= link_to myprofile_path(teacher) do %>
-      <div class="card">
+      <div class="card card mb-2">
         <div class="card-body">
           <h5 class="card-title"><%= teacher.name%></h5>
           <p class="card-subtitle mb-2 text-muted">Achievements: <%= teacher.achievements.count %></p>
@@ -22,7 +22,7 @@
 
   <% else %>
     <%= link_to teacher_path(teacher) do %>
-      <div class="card">
+      <div class="card card mb-2">
         <div class="card-body">
           <h5 class="card-title"><%= teacher.name%></h5>
           <p class="card-subtitle mb-2 text-muted">Achievements: <%= teacher.achievements.count %></p>

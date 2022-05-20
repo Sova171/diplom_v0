@@ -1,18 +1,17 @@
-
-<% if user_signed_in? && @achievement.user != current_user && current_user.is_teacher == true %>
-  <% pre_like = @achievement.likes.find { |like| like.user_id == current_user.id} %>
-  <% if pre_like %>
-    <%= button_to 'Reject', achievement_like_path(@achievement, pre_like), method: :delete %>
-  <% else %>
-    <%= button_to 'Confirm', achievement_likes_path(@achievement), method: :post %>
-  <% end %>
-<% end %>
-
-<h5 class="card-title d-flex justify-content-between mb-4">
+<h5 class="card-title d-flex justify-content-between ">
   <span><%= @achievement.title%></span>
   <div>
     <% if user_signed_in? && @achievement.user == current_user%>
       <%= button_to "Destroy this achievement", @achievement, method: :delete, class: 'btn btn-outline-danger'%>
+    <% end %>
+
+    <% if user_signed_in? && @achievement.user != current_user && current_user.is_teacher == true %>
+      <% pre_like = @achievement.likes.find { |like| like.user_id == current_user.id} %>
+      <% if pre_like %>
+        <%= button_to 'Reject', achievement_like_path(@achievement, pre_like), method: :delete, class: 'btn btn-outline-danger' %>
+      <% else %>
+        <%= button_to 'Confirm', achievement_likes_path(@achievement), method: :post, class: 'btn btn-outline-success' %>
+      <% end %>
     <% end %>
   </div>
 </h5>
@@ -33,9 +32,9 @@
 <%end %>
 
 <% if user_signed_in? && @achievement.user == current_user%>
-  <%= link_to "Back", myprofile_path%>
+  <%= link_to "Back", myprofile_path, class: 'btn btn-outline-secondary btn-sm'%>
 <%elsif @achievement.user.is_teacher?%>
-  <%= link_to "Back", teacher_path(@achievement.user)%>
+  <%= link_to "Back", teacher_path(@achievement.user), class: 'btn btn-outline-secondary btn-sm'%>
 <% else %>
-  <%= link_to "Back", student_path(@achievement.user)%>
+  <%= link_to "Back", student_path(@achievement.user), class: 'btn btn-outline-secondary btn-sm'%>
 <% end %>

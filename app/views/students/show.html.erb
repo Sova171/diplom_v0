@@ -1,6 +1,9 @@
-<strong>Student <%= @student.name%></strong>
-<br>
+<h5 class="card-title d-flex justify-content-between ">
+  <span>Student <%= @student.name%></span>
+</h5>
+
 Email: <%= @student.email %>
+<br>
 <br>
 
 <% if @student.achievements.empty? %>
@@ -18,4 +21,4 @@ Email: <%= @student.email %>
 
 <% end %>
 <br>
-<%=link_to "Back to student", root_path%>
+<%=link_to "Back to students", root_path, class: 'btn btn-outline-secondary btn-sm'%>

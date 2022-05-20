@@ -1,5 +1,4 @@
-<h3>Search Results</h3>
-
+<h3>Search Students</h3>
 
 <% if @results.blank? %>
   <strong>Results not found</strong>
@@ -8,7 +7,7 @@
 <% @results.each do |result| %>
   <% if user_signed_in? && result == current_user%>
     <%= link_to myprofile_path(result) do %>
-      <div class="card">
+      <div class="card mb-2">
         <div class="card-body">
           <h5 class="card-title"><%= result.name%></h5>
           <p  class="card-subtitle mb-2 text-muted">Achievements: <%= result.achievements.count %></p>
@@ -18,7 +17,7 @@
 
   <% else %>
     <%= link_to teacher_path(result) do %>
-      <div class="card">
+      <div class="card mb-2">
         <div class="card-body">
           <h5 class="card-title"><%= result.name%></h5>
           <p  class="card-subtitle mb-2 text-muted">Achievements: <%= result.achievements.count %></p>
@@ -28,4 +27,4 @@
   <% end %>
 <% end %>
 
-<%= link_to "Back", root_path%>
+<%= link_to "Back", root_path, class: 'btn btn-outline-secondary btn-sm'%>
