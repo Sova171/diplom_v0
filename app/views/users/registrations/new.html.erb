@@ -3,9 +3,9 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "users/shared/error_messages", resource: resource %>
 
-  <div class="form-group mb-2">
+  <div class="form-check mb-2">
     <%= f.label :is_teacher? %>
-    <%= f.check_box :is_teacher %>
+    <%= f.check_box :is_teacher, class: "form-check-input" %>
   </div>
 
   <div class="form-group mb-2">
