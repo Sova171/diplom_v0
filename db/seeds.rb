@@ -8,3 +8,4 @@
 require 'faker'
 
 require_relative 'seeds/users'
+require_relative 'seeds/achievements'
