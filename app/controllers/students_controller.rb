@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController
   def index
-    @students = User.all.where(is_teacher: false)
+    @pagy, @students = pagy(User.all.where(is_teacher: false), items: 5)
   end
 
   def show
@@ -12,7 +12,7 @@ class StudentsController < ApplicationController
       redirect_to root_path and return
     else
       @parameter = params[:search].downcase
-      @results = User.all.where("name LIKE :search", search: "%#{@parameter}%").where(is_teacher: false)
+      @results = User.all.where("lower(name) LIKE :search", search: "%#{@parameter}%").where(is_teacher: false)
     end
   end
 end
