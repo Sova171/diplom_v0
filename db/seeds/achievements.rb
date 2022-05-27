@@ -4,5 +4,5 @@ def create_achievement(user)
 end
 
 User.find_each do |user|
-  rand(0..5).times { create_achievement(user) }
+  rand(1..5).times { create_achievement(user) }
 end

@@ -13,6 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+
 a {
     text-decoration: none;
 }
@@ -20,4 +22,16 @@ a {
 a:hover,
 a:focus {
     color: darkcyan;
+}
+
+body {
+    background: url('back.jpg');
+    background-attachment: fixed;
+    background-position: center;
+}
+
+div.container6 {
+    display: flex;
+    align-items: center;
+    justify-content: center
 }

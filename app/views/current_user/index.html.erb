@@ -3,7 +3,6 @@
   <%=link_to "Add achievement", new_user_achievement_path(@user), class: 'btn btn-outline-success'%>
 </h3>
 
-
 <% if @user.is_teacher %>
   <strong>Teacher</strong>
 <% else %>
@@ -20,10 +19,17 @@
 
   <strong>Achievements:</strong>
     <% @user.achievements.each do |achievement| %>
-    <p>
-      <%=link_to achievement.title, user_achievement_path(@user, achievement), method: :post, class: 'glyphicon glyphicon-trash'%>
-      <span class="badge bg-secondary"><%= achievement.likes.count %></span>
-    </p>
+    <div class="card card mb-2">
+      <div class="card-body">
+        <%=link_to achievement.title, user_achievement_path(@user, achievement), method: :post, class: 'glyphicon glyphicon-trash'%>
+
+        <% if achievement.likes.count != 0%>
+          <span class="badge bg-success"><%= achievement.likes.count %></span>
+        <% else %>
+          <span class="badge bg-secondary"><%= achievement.likes.count %></span>
+        <% end %>
+      </div>
+    </div>
   <% end %>
 <% end %>
 
