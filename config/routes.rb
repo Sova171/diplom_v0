@@ -13,6 +13,10 @@ Rails.application.routes.draw do
   resources :achievements do
     resources :likes
   end
+
+  resources :achievements do
+    resources :comments
+  end
   #get "/teachers", to: "teachers#index"
 
   get "/myprofile", to: "current_user#index"

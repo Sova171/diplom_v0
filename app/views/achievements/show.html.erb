@@ -31,6 +31,13 @@
   <% end %>
 <%end %>
 
+
+<%= render "comments/form" %>
+<% @comments.each do |comment| %>
+<%= render "comments/comment", achievement: @achievement, comment: comment %>
+  <% end %>
+<br>
+
 <% if user_signed_in? && @achievement.user == current_user%>
   <%= link_to "Back", myprofile_path, class: 'btn btn-outline-secondary btn-sm'%>
 <%elsif @achievement.user.is_teacher?%>

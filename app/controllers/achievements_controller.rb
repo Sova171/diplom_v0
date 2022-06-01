@@ -4,18 +4,19 @@ class AchievementsController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @achievement = @user.achievements.create(achievement_params)
-    redirect_to myprofile_path
+    redirect_to myprofile_path, notice: "Achievement was successfully created."
   end
 
   def show
     @achievement = Achievement.find(params[:id])
+    @comments = @achievement.comments.order(created_at: :desc)
   end
 
   def destroy
     @achievement = Achievement.find(params[:id])
     @achievement.destroy
 
-     redirect_to myprofile_path, notice: "Achievement was successfully destroyed."
+     redirect_to myprofile_path, alert: "Achievement was successfully destroyed."
   end
 
   private
