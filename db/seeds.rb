@@ -6,6 +6,6 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 require 'faker'
-#User.new({ :name => 'Admin', :email => 'admin@example.com', :password => 'AdminPassword', :password_confirmation => 'AdminPassword', :admin => true }).save!
-#require_relative 'seeds/users'
+User.new({ :name => 'Admin', :email => 'admin@example.com', :password => 'AdminPassword', :password_confirmation => 'AdminPassword', :admin => true }).save!
+require_relative 'seeds/users'
 require_relative 'seeds/achievements'

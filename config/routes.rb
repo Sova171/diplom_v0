@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
 
+  get "/users/:id", to: "students#destroy_students"
+
+
   resources :users do
     resources :achievements
   end

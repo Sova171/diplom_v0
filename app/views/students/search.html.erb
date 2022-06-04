@@ -19,8 +19,14 @@
     <%= link_to student_path(result) do %>
       <div class="card mb-2">
         <div class="card-body">
-          <h5 class="card-title"><%= result.name%></h5>
-          <p  class="card-subtitle mb-2 text-muted">Achievements: <%= result.achievements.count %></p>
+          <h5 class="card-title d-flex justify-content-between "><%= result.name%>
+            <div>
+              <% if user_signed_in? && current_user.admin%>
+                <%= link_to "Destroy", result, method: :delete, class: 'btn btn-outline-danger'%>
+              <% end %>
+            </div>
+          </h5>
+          <p class="card-subtitle mb-2 text-muted">Achievements: <%= result.achievements.count %></p>
         </div>
       </div>
     <% end %>

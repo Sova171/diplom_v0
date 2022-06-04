@@ -24,7 +24,13 @@
     <%= link_to teacher_path(teacher) do %>
       <div class="card card mb-2">
         <div class="card-body">
-          <h5 class="card-title"><%= teacher.name%></h5>
+          <h5 class="card-title d-flex justify-content-between "><%= teacher.name%>
+            <div>
+              <% if user_signed_in? && current_user.admin%>
+                <%= link_to "Destroy", teacher, method: :delete, class: 'btn btn-outline-danger'%>
+              <% end %>
+            </div>
+          </h5>
           <p class="card-subtitle mb-2 text-muted">Achievements: <%= teacher.achievements.count %></p>
         </div>
       </div>

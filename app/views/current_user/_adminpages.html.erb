@@ -1,15 +1,65 @@
 <h3>Welcome Admin</h3>
+<div class="container mb-2">
+  <div class="row">
+    <div class="col-sm">
+      <h4>Statistic</h4>
+      <strong>Users:</strong>
+      <%= User.count - User.all.where(admin: true).count %>
+      <br>
+      <strong>Students:</strong>
+      <%= User.all.where(is_teacher: false).count - User.all.where(admin: true).count %>
+      <br>
+      <strong>Teachers:</strong>
+      <%= User.all.where(is_teacher: true).count %>
+      <br>
+      <strong>Achievement:</strong>
+      <%= Achievement.count %>
+      <br>
+      <strong>Comments:</strong>
+      <%= Comment.count %>
+      <br>
+    </div>
+  </div>
+</div>
 
-<span>User:</span>
-<%= User.count - User.all.where(admin: true).count %>
-<br>
+<% students = User.all.where(is_teacher: false).where(admin: false) %>
+<% teachers = User.all.where(is_teacher: true) %>
 
-<span>Student:</span>
-<%= User.all.where(is_teacher: false).count - User.all.where(admin: true).count %>
-<br>
-<span>Teacher:</span>
-<%= User.all.where(is_teacher: true).count %>
-<br>
+<div class="container mb-2">
+  <div class="row">
+    <div class="col-sm">
+      <h5>Students:</h5>
+      <ul class="list-group">
+        <% students.each do |student| %>
+          <li class="list-group-item d-flex justify-content-between">
+            <%=link_to student.name, student_path(student) %>
+            <%= link_to "Destroy", student, method: :delete, class: 'text-danger'%>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col-sm">
+      <h5>Teachers:</h5>
+      <ul class="list-group">
+        <% teachers.each do |teacher| %>
+          <li class="list-group-item d-flex justify-content-between">
+            <%=link_to teacher.name, teacher_path(teacher)%>
+            <%= link_to "Destroy", teacher, method: :delete, class: 'text-danger'%>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
 
-<%=link_to "Back to teachers", teachers_path, class: 'btn btn-outline-success btn-sm'%>
-<%=link_to "Back to students", students_path, class: 'btn btn-outline-success btn-sm'%>
+
+<div class="container mb-2">
+  <div class="row">
+    <div class="col-sm">
+      <%=link_to "To students", students_path, class: 'btn btn-outline-success btn-sm'%>
+    </div>
+    <div class="col-sm">
+      <%=link_to "To teachers", teachers_path, class: 'btn btn-outline-success btn-sm'%>
+    </div>
+  </div>
+</div>

@@ -9,4 +9,4 @@ def create_user
   user.save!
 end
 
-5.times { create_user }
+25.times { create_user }

@@ -1,5 +1,8 @@
 <h5 class="card-title d-flex justify-content-between ">
   <span>Student <%= @student.name%></span>
+  <% if user_signed_in? && current_user.admin%>
+    <%= link_to "Destroy", @student, method: :delete, class: 'btn btn-outline-danger'%>
+  <% end %>
 </h5>
 
 Email: <%= @student.email %>
