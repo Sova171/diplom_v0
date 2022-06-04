@@ -1,7 +1,7 @@
 <h5 class="card-title d-flex justify-content-between ">
   <span><%= @achievement.title%></span>
   <div>
-    <% if user_signed_in? && @achievement.user == current_user || current_user.admin%>
+    <% if user_signed_in? && @achievement.user == current_user || user_signed_in? && current_user.admin%>
       <%= button_to "Destroy this achievement", @achievement, method: :delete, class: 'btn btn-outline-danger'%>
     <% end %>
 
