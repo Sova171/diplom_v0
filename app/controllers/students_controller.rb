@@ -9,6 +9,8 @@ class StudentsController < ApplicationController
 
   def destroy_students
     @user = User.find(params[:id])
+    comments = Comment.where(user_id: @user.id)
+    comments.each { |comment| comment.destroy}
     @user.destroy
     redirect_to myprofile_path, notice: "User deleted"
   end

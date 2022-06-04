@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
       flash[:notice] = "comment successfully created"
       redirect_to achievement_path(@achievement)
     else
-      flash[:notice] = "oops.."
+      flash[:notice] = "oops.. You need to be authenticated"
       redirect_to achievement_path(@achievement)
     end
   end
