@@ -1,0 +1,15 @@
+<h3>Welcome Admin</h3>
+
+<span>User:</span>
+<%= User.count - User.all.where(admin: true).count %>
+<br>
+
+<span>Student:</span>
+<%= User.all.where(is_teacher: false).count - User.all.where(admin: true).count %>
+<br>
+<span>Teacher:</span>
+<%= User.all.where(is_teacher: true).count %>
+<br>
+
+<%=link_to "Back to teachers", teachers_path, class: 'btn btn-outline-success btn-sm'%>
+<%=link_to "Back to students", students_path, class: 'btn btn-outline-success btn-sm'%>

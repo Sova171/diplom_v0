@@ -11,7 +11,11 @@
           </li>
         <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to "My profile", myprofile_path, class: 'nav-link' %>
+            <% if current_user.admin %>
+              <%= link_to "AdminPage", myprofile_path, class: 'nav-link' %>
+            <% else %>
+              <%= link_to "My profile", myprofile_path, class: 'nav-link' %>
+            <% end %>
           </li>
           <% end %>
       </ul>

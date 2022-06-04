@@ -10,7 +10,7 @@
 <%end %>
 
   <% @students.each do |student| %>
-      <% if user_signed_in? && student == current_user%>
+      <% if user_signed_in? && student == current_user && !student.admin%>
         <%= link_to myprofile_path(student) do %>
           <div class="card mb-2">
             <div class="card-body">
@@ -20,7 +20,10 @@
           </div>
         <% end %>
 
-      <% else %>
+      <% elsif student.admin%>
+      <% next %>
+
+      <% else%>
         <%= link_to student_path(student) do %>
           <div class="card mb-2">
             <div class="card-body">

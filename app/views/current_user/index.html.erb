@@ -1,3 +1,6 @@
+<% if @user.admin %>
+  <%= render "current_user/adminpages" %>
+<% else %>
 <h3 class='card-title d-flex justify-content-between'>
   <span>Welcome</span>
   <%=link_to "Add achievement", new_user_achievement_path(@user), class: 'btn btn-outline-success'%>
@@ -41,3 +44,4 @@
   <%=link_to "Back to students", students_path, class: 'btn btn-outline-secondary btn-sm'%>
 <% end %>
 
+<% end %>
