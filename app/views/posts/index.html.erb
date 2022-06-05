@@ -1,6 +1,6 @@
 <h2 class='card-title'>Posts</h2>
 <% if user_signed_in? %>
-  <%= link_to "Add post", new_user_post_path %>
+  <h4><div class="container6"><%= link_to "Add post", new_user_post_path %></div></h4>
 <% end %>
 
 <% if @posts.count == 0 %>
@@ -10,10 +10,14 @@
       <div class="card mb-2">
         <div class="card-body">
           <%= post.body %>
-          <div>
-            <% if user_signed_in? && (current_user == post.user || current_user.admin)%>
-              <%= button_to "Delete", [post.user, post], method: :delete, class: 'btn btn-outline-danger'%>
-            <% end %>
+          <hr/>
+          <div class='card-title d-flex justify-content-between'>
+            <p class="card-subtitle text-muted">Author: <%= post.user.name %></p>
+            <div>
+              <% if user_signed_in? && (current_user == post.user || current_user.admin)%>
+                <%= button_to "Delete", [post.user, post], method: :delete, class: 'btn btn-outline-danger'%>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
