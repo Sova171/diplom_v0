@@ -8,9 +8,12 @@ Rails.application.routes.draw do
 
   get "/users/:id", to: "students#destroy_students"
 
-
   resources :users do
     resources :achievements
+  end
+
+  resources :users do
+    resources :posts
   end
 
   resources :achievements do

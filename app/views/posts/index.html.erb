@@ -1,0 +1,21 @@
+<h2 class='card-title'>Posts</h2>
+<% if user_signed_in? %>
+  <%= link_to "Add post", new_user_post_path %>
+<% end %>
+
+<% if @posts.count == 0 %>
+  No posts yet
+<% else %>
+  <% @posts.each do |post| %>
+      <div class="card mb-2">
+        <div class="card-body">
+          <%= post.body %>
+          <div>
+            <% if user_signed_in? && (current_user == post.user || current_user.admin)%>
+              <%= button_to "Delete", [post.user, post], method: :delete, class: 'btn btn-outline-danger'%>
+            <% end %>
+          </div>
+        </div>
+      </div>
+  <% end %>
+<% end %>
