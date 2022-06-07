@@ -10,7 +10,16 @@
       <div class="card mb-2">
         <div class="card-body">
           <%= post.body %>
+          <div class = container6>
+            <% if post.images.attached? %>
+              <% post.images.each do |image| %>
+                <%= image_tag image, width: "200px" %>
+              <% end %>
+            <% end %>
+          </div>
+
           <hr/>
+
           <div class='card-title d-flex justify-content-between'>
             <p class="card-subtitle text-muted">Author: <%= post.user.name %></p>
             <div>
