@@ -17,13 +17,18 @@ Email: <%= @teacher.email %>
   <% @teacher.achievements.each do |achievement| %>
     <div class="card card mb-2">
       <div class="card-body">
-        <%=link_to achievement.title, user_achievement_path(@teacher, achievement)%>
+        <div class=" d-flex justify-content-between">
+          <div>
+            <%=link_to achievement.title, user_achievement_path(@teacher, achievement)%>
+            <% if achievement.likes.count != 0%>
+              <span class="badge bg-success"><%= achievement.likes.count %></span>
+            <% else %>
+              <span class="badge bg-secondary"><%= achievement.likes.count %></span>
+            <% end %>
+          </div>
 
-        <% if achievement.likes.count != 0%>
-          <span class="badge bg-success"><%= achievement.likes.count %></span>
-        <% else %>
-          <span class="badge bg-secondary"><%= achievement.likes.count %></span>
-        <% end %>
+          <p class="card-subtitle mb-2 text-muted">Comments:<%= achievement.comments.count %></p>
+        </div>
       </div>
     </div>
   <% end %>
