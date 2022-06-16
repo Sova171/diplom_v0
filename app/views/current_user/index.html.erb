@@ -15,6 +15,8 @@
 <br>
 <br>
 
+<%= render "current_user/favorite" %>
+
 <% if @user.achievements.empty? %>
   <strong>No achievements</strong>
   <br>
@@ -24,13 +26,19 @@
     <% @user.achievements.each do |achievement| %>
     <div class="card card mb-2">
       <div class="card-body">
-        <%=link_to achievement.title, user_achievement_path(@user, achievement), method: :post, class: 'glyphicon glyphicon-trash'%>
+        <div class=" d-flex justify-content-between">
+          <div>
+            <%=link_to achievement.title, user_achievement_path(@user, achievement), method: :post, class: 'glyphicon glyphicon-trash'%>
 
-        <% if achievement.likes.count != 0%>
-          <span class="badge bg-success"><%= achievement.likes.count %></span>
-        <% else %>
-          <span class="badge bg-secondary"><%= achievement.likes.count %></span>
-        <% end %>
+            <% if achievement.likes.count != 0%>
+              <span class="badge bg-success"><%= achievement.likes.count %></span>
+            <% else %>
+              <span class="badge bg-secondary"><%= achievement.likes.count %></span>
+            <% end %>
+          </div>
+
+          <p class="card-subtitle mb-2 text-muted">Comments:<%= achievement.comments.count %></p>
+        </div>
       </div>
     </div>
   <% end %>

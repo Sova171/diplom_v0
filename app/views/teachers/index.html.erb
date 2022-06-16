@@ -29,6 +29,14 @@
               <% if user_signed_in? && current_user.admin%>
                 <%= link_to "Destroy", teacher, method: :delete, class: 'btn btn-outline-danger'%>
               <% end %>
+
+              <% if user_signed_in? && !current_user.admin%>
+                <% if !current_user.following?(teacher) %>
+                  <%= link_to image_tag("/assets/star-empty.png", option = {height: "25px"}), { controller: 'relationships', action: "create", id: teacher.id }, remote: true, method: :post %>
+                <% else %>
+                  <%= link_to image_tag("/assets/star.jpg", option = {height: "25px"}), { controller: 'relationships', action: "destroy", id: teacher.id }, remote: true, method: :delete %>
+                <% end %>
+              <% end %>
             </div>
           </h5>
           <p class="card-subtitle mb-2 text-muted">Achievements: <%= teacher.achievements.count %></p>

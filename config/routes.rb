@@ -13,6 +13,12 @@ Rails.application.routes.draw do
   end
 
   resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+
+  resources :users do
     resources :posts
   end
 
@@ -33,4 +39,7 @@ Rails.application.routes.draw do
   resources :teachers
   resources :students
   resources :timespans
+  #resources :relationships, only: [:create, :destroy]
+  get "/relationships/:id", to: "relationships#destroy"
+  get "/relationships", to: "relationships#create"
 end
