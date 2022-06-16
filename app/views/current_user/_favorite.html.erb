@@ -28,7 +28,7 @@
         <% students.each do |student| %>
           <li class="list-group-item d-flex justify-content-between">
             <%=link_to student.name, student_path(student) %>
-            <%= link_to image_tag("/assets/star.jpg", option = {height: "25px"}), { controller: 'relationships', action: "destroy", id: student.id }, remote: true, method: :delete %>
+            <%= link_to image_tag("star.jpg", option = {height: "25px"}), { controller: 'relationships', action: "destroy", id: student.id }, remote: true, method: :delete %>
           </li>
         <% end %>
       </ul>
@@ -39,7 +39,7 @@
         <% teachers.each do |teacher| %>
           <li class="list-group-item d-flex justify-content-between">
             <%=link_to teacher.name, teacher_path(teacher)%>
-            <%= link_to image_tag("/assets/star.jpg", option = {height: "25px"}), { controller: 'relationships', action: "destroy", id: teacher.id }, remote: true, method: :delete %>
+            <%= link_to image_tag("star.jpg", option = {height: "25px"}), { controller: 'relationships', action: "destroy", id: teacher.id }, remote: true, method: :delete %>
           </li>
         <% end %>
       </ul>

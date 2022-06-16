@@ -35,9 +35,9 @@
 
                   <% if user_signed_in? && !current_user.admin%>
                     <% if !current_user.following?(student) %>
-                      <%= link_to image_tag("/assets/star-empty.png", option = {height: "25px"}), { controller: 'relationships', action: "create", id: student.id }, remote: true, method: :post %>
+                      <%= link_to image_tag("star-empty.jpg", option = {height: "25px"}), { controller: 'relationships', action: "create", id: student.id }, remote: true, method: :post %>
                     <% else %>
-                      <%= link_to image_tag("/assets/star.jpg", option = {height: "25px"}), { controller: 'relationships', action: "destroy", id: student.id }, remote: true, method: :delete %>
+                      <%= link_to image_tag("star.jpg", option = {height: "25px"}), { controller: 'relationships', action: "destroy", id: student.id }, remote: true, method: :delete %>
                     <% end %>
                   <% end %>
                 </div>
