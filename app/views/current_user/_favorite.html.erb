@@ -26,22 +26,30 @@
       <div class="col-sm">
         <h5>Students:</h5>
         <ul class="list-group">
-          <% students.each do |student| %>
-            <li class="list-group-item d-flex justify-content-between">
-              <%=link_to student.name, student_path(student) %>
-              <%= link_to image_tag("star.jpg", option = {height: "25px"}), { controller: 'relationships', action: "destroy", id: student.id }, remote: true, method: :delete %>
-            </li>
+          <% if students.count == 0 %>
+            <h5>No one favorites student</h5>
+          <% else %>
+            <% students.each do |student| %>
+              <li class="list-group-item d-flex justify-content-between">
+                <%=link_to student.name, student_path(student) %>
+                <%= link_to image_tag("star.jpg", option = {height: "25px"}), { controller: 'relationships', action: "destroy", id: student.id }, remote: true, method: :delete %>
+              </li>
+            <% end %>
           <% end %>
         </ul>
       </div>
       <div class="col-sm">
         <h5>Teachers:</h5>
         <ul class="list-group">
-          <% teachers.each do |teacher| %>
-            <li class="list-group-item d-flex justify-content-between">
-              <%=link_to teacher.name, teacher_path(teacher)%>
-              <%= link_to image_tag("star.jpg", option = {height: "25px"}), { controller: 'relationships', action: "destroy", id: teacher.id }, remote: true, method: :delete %>
-            </li>
+          <% if teachers.count == 0 %>
+            <h5>No one favorites teacher</h5>
+          <% else %>
+            <% teachers.each do |teacher| %>
+              <li class="list-group-item d-flex justify-content-between">
+                <%=link_to teacher.name, teacher_path(teacher)%>
+                <%= link_to image_tag("star.jpg", option = {height: "25px"}), { controller: 'relationships', action: "destroy", id: teacher.id }, remote: true, method: :delete %>
+              </li>
+            <% end %>
           <% end %>
         </ul>
       </div>
