@@ -25,6 +25,16 @@
                 <%= link_to "Destroy", result, method: :delete, class: 'btn btn-outline-danger'%>
               <% end %>
             </div>
+
+            <div>
+              <% if user_signed_in? && !current_user.admin%>
+                <% if !current_user.following?(result) %>
+                  <%= link_to image_tag("star-empty.jpg", option = {height: "25px"}), { controller: 'relationships', action: "create", id: result.id }, remote: true, method: :post %>
+                <% else %>
+                  <%= link_to image_tag("star.jpg", option = {height: "25px"}), { controller: 'relationships', action: "destroy", id: result.id }, remote: true, method: :delete %>
+                <% end %>
+              <% end %>
+            </div>
           </h5>
           <p class="card-subtitle mb-2 text-muted">Achievements: <%= result.achievements.count %></p>
         </div>
